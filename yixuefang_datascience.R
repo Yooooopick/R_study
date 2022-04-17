@@ -1201,3 +1201,104 @@ mystrinf13 <- c('theory', 'the republic', '  they')
 grep('\\<the\\>',mystrinf13)
 
 
+#stringi和stringr扩展包
+library(stringi)
+library(stringr)
+#str_c函数
+str_c('a','b')
+str_c('a','b',sep = '-')
+#str_length函数,相当于基础包的nchar
+
+#类似于substr函数的函数str_sub
+yxf <- 'yi xue fang'
+str_sub(yxf, c(1,4,8), c(2,6,11))#后面分别是三个字符串的起始和终止向量
+#替换
+str_sub(yxf, 1,1) <-  'Y'
+yxf
+#str_dup函数
+fruit <- c("apple", "pear", "banana")
+str_dup(fruit, 2)
+str_dup(fruit, 2:4)#对三个字符串进行向量化操作,重复次数不同！
+#str_trim去除两侧空格
+string <- ' Eternal love for YanQ '
+str_trim(string, side = 'both')
+#str_extract函数，利用正则表达式
+phones <- c(" 219 733 8965", "329-293-8753 ", "banana", "595 794 7569",
+            "387 287 6718", "apple", "233.398.9187  ", "482 952 3315",
+            "239 923 8115 and 842 566 4692", "Work: 579-499-7527", "$1000",
+            "Home: 543.355.3679")
+str_extract(phones, "([2-9][0-9]{2})[- .]([0-9]{3})[- .]([0-9]{4})")
+#{2}是上面的重复两次，[- .]用来匹配中间连接符
+
+#str_replace函数只替换遇到的第一个， 而其他_all则替换遇到的所有
+fruits <- c("one apple", "two pears", "three bananas")
+str_replace_all(fruits, "[aeiou]", "-")
+
+#stringi系列都是stri开头，和上面不同
+#stri_join函数
+stri_join(1:7, letters[1:7], sep='-')
+stri_join(1:7, letters[1:7], collapse='-')
+#第一个str_cmp_eq表示匹配两个字符串必须完全一样才返回TRUE
+stri_cmp_eq() & stri_cmp_neq()
+stri_cmp_neq('AB','aB')
+
+#lt表示小于，gt表示大于stri_cmp_lt() & stri_cmp_gt(),注意到针对字母就表示针对字母表排序
+#注意，函数默认首先根据a和b大小来了
+stri_cmp_gt('a221','b121')
+
+#计数函数str_count
+language <- c('Python','R', 'PHP', 'Ruby', 'Java', 
+              'JavaScript', 'C', 'Oracle', 'C++', 'C#', 'Spark', 'Go',
+              'Room', 'Good', 'Pathon', 'ScriptJava', 'R2R', 'C+','C*')
+stri_count(language, fixed = 'R')
+stri_count(language, regex = '^J')
+
+#stri_count_boundaties函数，表示以某种类型为边界的函数
+test <- 'The\u00a0above-mentioned    features are very useful. 
+Warm thanks to their developers. Tomorrow is a, new$% day###'
+stri_count_boundaries(test, type="word")#一共45个单词，
+stri_count_boundaries(test, type="sentence")#多少个句子
+stri_count_boundaries(test, type="character")#多少个字母
+
+
+#stri_dup制造重复字符串
+stri_dup(c("abc", "pqrst"), c(4, 2))
+#寻找重复字符串位置
+stri_duplicated(c("a", "b", "a", NA, "a", NA))
+stri_duplicated(c("a", "b", "a", NA, "a", NA), fromLast=TRUE)
+stri_duplicated_any(c("a", "b", "a", NA, "a", NA))# 是否有重复，有的话，最多多少次
+
+stri_detect_fixed(c("stringi R", "REXAMINE", "123"), c('i', 'R', '0'))#在前面的里面依次去找后面的
+
+stri_detect_regex(c("above", "abort", "about", "abnormal", 'abandon'), '^ab')#detect用来发现
+stri_detect_regex(c("above", "abort", "about", "abnormal", 'abandon'), 't\\b')
+stri_detect_regex(c('ABOUT','abort','AboVE'), '^ab', case_insensitive = TRUE)#是否忽略大小写，TRUE是忽视
+
+stri_startswith_fixed(c("a1", "a2", "b3", "a4", "c5"), "a")#匹配是否以某个开始的
+stri_startswith_fixed(c("abaDc", "aabadc",'ababa'), "ba", from=2)#from参数表示从什么位置开始匹配
+
+stri_endswith_fixed(c("abaDc", "aabadc",'ababa'),'ba')#以什么结尾
+stri_endswith_fixed(c("abaDc", "aabadc",'ababa','qcytr','qcbgf'),'ba', to = 3)#to表示只匹配到第几位
+
+tEmp_text <- c('EU_FRA02_C1_S2008','AF_COM12_B0_2004','AF_COM17_F0_S2008',
+               'AS_CHN11_C3_2004','EU-FRA-C3-S2007','NAUSA02E02005',
+               'AS_CHN12_N0_05','NA_USA03_C2_S2007','NA USA04_A3 2004',
+               'EU_UK01_A0_2009','eu_fra_a2_s98', 'SA_BRA08_B0_1996')
+#Generate a strings composed by several sequence names.
+stri_extract_all(tEmp_text, regex = '[0-9]{2,4}\\b')#注意只返回匹配到的部分，而且是一个List
+
+stri_extract_all_fixed("abaBAba", "Aba", case_insensitive=TRUE, overlap=TRUE)#overlap表示可以重复寻找Aba
+stri_extract_all_boundaries("stringi: THE string processing package 123.48...")#同时返回空格
+stri_extract_all_words("stringi: THE string processing package 123.48...")#不返回空格
+
+stri_isempty(c(',', '', 'abc', '123', '\u0105\u0104',' '))#空格不属于空字符
+#stri_locate_all找到fixed里面规定的内容，返回具体定位位置
+m1 <- stri_locate_all('I want to learn R to promote my statistical skills and my Ruby', fixed=c('to','my'))
+class(m1)
+#注意到m1是list
+View(m1[[2]])
+m1[[1]][,2][2]
+#得到遇到的第二个to的结束位置！
+#思考如何得到第二个my的开始位置
+
+
