@@ -1,18 +1,18 @@
 Sys.setenv(lagnuage="en")
 data(Indometh)
 #install.packages("knitr")
-library(knitr)
+library(knitr) # A General-Purpose Package for Dynamic Report Generation in R
 #install.packages("remotes")
 library(remotes) # CRAN v2.1.1 
-library(stringi) # CRAN v1.4.6 
-library(stringr) # CRAN v1.4.0 
-library(tidyverse)
+library(stringi) # Character String Processing Facilities # Character String Processing Facilities # Character String Processing Facilities # CRAN v1.4.6 
+library(stringr) # Simple, Consistent Wrappers for Common String Operations # CRAN v1.4.0 
+library(tidyverse) # Easily Install and Load the 'Tidyverse'
 #install.Rtools()
-library(devtools)
-library(installr)
-library(rinds)
+library(devtools) # Tools to Make Developing R Packages Easier
+library(installr) # Using R to Install Stuff on Windows OS (Such As: R, 'Rtools','RStudio', 'Git', and More!)
+library(rinds) # Functions and datasets for the book "R in Data Science"
 #install.packages('readxl')   
-library(readxl)
+library(readxl) # Read Excel Files # Read Excel Files
 
 
 #向量，具有方向的变量
@@ -123,7 +123,7 @@ my_order_fac
 #解决方案一：把Placebo换成0mg
 #解决方案二：扩展包DescTools
 install.packages("DescTools")
-library(DescTools)
+library(DescTools) # Tools for Descriptive Statistics
 
 #reorder.factor函数
 my_order_fac2 <- reorder.factor(my_order_fac,new.order = x)
@@ -180,7 +180,7 @@ my_array
 
 #给数组命名
 my_array2 <- array(data=1:16,dim=c(4,2,2),
-                   dimnames=list(LETTERS[1:4],c('col1','col2'),c('first','second')))
+dimnames=list(LETTERS[1:4],c('col1','col2'),c('first','second')))
 # dimnames内顺序为行，列，数组分组名称，分别对应array定义时候的dim的三个数字的顺序
 
 #提取矩阵中的元素
@@ -232,7 +232,9 @@ tail(iris)
 #psych函数包
 
 #install.packages('psych')
-library(psych)
+library(psych) # Procedures for Psychological, Psychometric, and Personality
+Research # Procedures for Psychological, Psychometric, and Personality
+Research
 describe(iris)
 #describe函数
 #对describe的理解，其实就是统计学中的数据描述，mean是均值，sd标准差，trimmed去除头尾极值以后的均值，skew和kurtosis是偏度和丰度，是用来评价正态分布情况
@@ -317,45 +319,45 @@ iris_sub4
 
 if(x>2)
 {
-  y=2*x
-  z=3*y
+ y=2*x
+ z=3*y
 } else #注意大括号的位置和else必须紧跟在}的后面
 {
-  y=2+x
-  z=3*y
+ y=2+x
+ z=3*y
 }
 x <- 6
-y;z   
+ y;z   
 #注意每给x赋值一次，那么上面的函数必须重新运行一次
-
+ 
 #循环repeat
 #注意print函数前后的{}都是可以省略的
-i <- -1
-if(i>0 & i<2) {print('i=1')} else
-{print("i don't know")}
+ i <- -1
+ if(i>0 & i<2) {print('i=1')} else
+         {print("i don't know")}
 #repeat函数,注意到退出循环的条件在if后面给出，else后面给出{}引导的条件命令，这样看起来美观
-repeat {if(i>25)break else
-{print(i)
-  i <- i+5}
-}
+ repeat {if(i>25)break else
+ {print(i)
+         i <- i+5}
+ }
 #while函数
-i <- 5
-i
-while (i<25){
-  print(i)
-  i <- i+5
-}
-# for函数，k是一个用来遍历的“虚拟变量”
-for (k in 1:10){
-  print(k)
-}
-#利用set.seed和for循环语句筛选数据
+ i <- 5
+ i
+ while (i<25){
+ print(i)
+         i <- i+5
+ }
+ # for函数，k是一个用来遍历的“虚拟变量”
+ for (k in 1:10){
+         print(k)
+ }
+ #利用set.seed和for循环语句筛选数据
 set.seed(2021)
 x <- sample(10:100,10)
 y <- sample(1:100,10)
 z <- NA
 for(m in 1:10){
-  z[m]=x[m]>y[m]
+        z[m]=x[m]>y[m]
 }
 z
 class(z)
@@ -366,10 +368,10 @@ x <- sample(10:100,10)
 y <- sample(1:100,10)
 n <- NULL
 for (m in 1:10){
-  if(x[m]>y[m]){
-    n=append(n,x[m])
-  } else {n=append(n,y[m])#注意到第一个大括号跟在else后面，第二个换行
-  }
+     if(x[m]>y[m]){
+     n=append(n,x[m])
+     } else {n=append(n,y[m])#注意到第一个大括号跟在else后面，第二个换行
+     }
 }
 n
 #函数append()用于修改合并向量，可以把两个向量合并为一个,举例：
@@ -379,9 +381,9 @@ n
 #双重循环,如果程序运行不出来，注意检查i和j的下标是否正确
 matrix_10 <- matrix(NA,nrow=4,ncol=5)
 for (i in 1:4)
-  for (j in 1:5){
-    matrix_10[i,j] <- 2
-  }
+        for (j in 1:5){
+                matrix_10[i,j] <- 2
+        }
 matrix_10
 # 不管是ifelse,while,repeat,for,还是其他函数和循环，重点是三个
 # 第一，循环外设置输入，比如上面的空矩阵matrix_10
@@ -396,24 +398,24 @@ mean(c(0.000004,1,2,3,4,5,6,7,NA,120000),na.rm=T,trim=0.2)
 
 #自定义函数
 my_fun1 <- function(x,y){#注意大括号位置
-  x+y
+        x+y
 }
 my_fun1(2,3)
 #设置默认值,y=2
 my_fun2 <- function(x,y=2){
-  x+y
+        x+y
 }
 my_fun2(2)
 my_fun2(2,3)
-
+     
 # ... 缺省参数（我不知道你会传入什么，用...代替）
 # sqrt是平方根，summary是返回参数，summary经常用来返回对统计的描述等等，如下所示：
 values <- c(sqrt(1:100))
 head(values)
 my_fun4 <- function(x,...){
-  print(x)
-  summary(...)
-}# 严格按照格式来，{}和函数主体换行写
+        print(x)
+        summary(...)
+        }# 严格按照格式来，{}和函数主体换行写
 my_fun4('here is the summary for values:',values,digits=2)
 #digits=2就是小数点后1位，3就是小数点两位
 # 注意这里的语法结构，digits=2中digits并非变量名称也是可以出现在my_fun4的函数描述里面的
@@ -421,29 +423,31 @@ my_fun4('here is the summary for values:',values,digits=2)
 
 #用缺省参数作求和,用...代替我们还不知道的用户可能输入的数值
 addup1 <- function(x,...){
-  args <- list(...)#列表形式自由，是最自由的数据格式,ggplot2图片也可以放在里面
-  for (a in args) x <- x+a
-  x # x是为了循环结束的时候把结果打印出来,print(x),return(x)也可以
+        args <- list(...)#列表形式自由，是最自由的数据格式,ggplot2图片也可以放在里面
+        for (a in args) x <- x+a
+        x # x是为了循环结束的时候把结果打印出来,print(x),return(x)也可以
 }
 #上面是一个累加的自定义函数
 # 特别注意到...指代的可以不止一个变量而是一群变量！
 addup1(1,5,6,7,8)
 
 normalize <- function(x, ... , m = mean(x, ...), s = sd(x, ...)) {
-  (x - m) / s # 对应下面的例子，x就是1，而...是其他数，...把这些数也传给了mean和sd函数
+        (x - m) / s # 对应下面的例子，x就是1，而...是其他数，...把这些数也传给了mean和sd函数
 }
 normalize(1:10)
 
 
 #文件读取
 #csv
+# 拓展学习https://rstudio-pubs-static.s3.amazonaws.com/188561_f365a21d9ac041f99dc92c6d9e20cfeb.html
+
 OE <- read.csv(file="OE_count.csv",header=T,row.names=1,sep=',',encoding="UTF-8",
                na.strings=c(NA,NULL))# 注意，encoding和sep在excel导出为csv的时候指定的话这里就需要调整
 #txt
 OE_2 <- read.table()
 # excel文件，使用readxl包的read_excel
 example <- read_excel(path="example.xlsx",sheet=1,col_types = "text")
-
+     
 x <- scan()
 #console输入数据，双击enter停止
 #cat函数
@@ -453,7 +457,7 @@ dir(pattern = ".*.txt$")
 
 #数据的局部读取
 install.packages("XLConnect")
-library(XLConnect)
+library(XLConnect) # Excel Connector for R
 example_2 <- XLConnect::readWorksheetFromFile("example.xlsx",
                                               sheet=1,
                                               startRow=1,
@@ -463,7 +467,7 @@ example_2 <- XLConnect::readWorksheetFromFile("example.xlsx",
 # spss,sas,stata数据用foreign包读取
 
 #stringi扩展包
-library(stringi)
+library(stringi) # Character String Processing Facilities # Character String Processing Facilities # Character String Processing Facilities
 my_fasta <- stri_read_lines( 'example.fasta')     
 head(my_fasta)
 #内置函数
@@ -524,9 +528,9 @@ long <- reshape(wide, idvar = "Subject", varying = list(2:12),# varing表示我�
                 v.names = "concentrtion", direction = "long")
 
 #reshape2函数,重点函数
-library(reshape2)
+library(reshape2) # Flexibly Reshape Data: A Reboot of the Reshape Package # Flexibly Reshape Data: A Reboot of the Reshape Package
 mew_iris <- melt(iris,id.vars='Species')# id.vars是标识变量，表示不把这个变量拿进去融化
-View(mew_iris)
+View(iris)
 View(mew_iris)#变成长型数据以后，下一步我想知道不同花种的value的均值应该怎么？
 #dcast函数,注意formula参数内是四格表的x y轴，value.var是需要被统计的变量
 dcast(mew_iris,formula=Species~variable,fun.aggregate=mean,value.var='value')
@@ -535,7 +539,6 @@ View(tips)
 dcast(data = tips, formula = sex~., fun.aggregate = mean, value.var = 'tip')# 如果只关注一个分类变量，那么formula的右侧变量使用.代替
 dcast(data = tips, formula = sex ~ smoker, fun.aggregate = mean, value.var = 'tip')
 #只需要调整formula，就能得到不同的四格表
-
 
 
 #变量的因子化
@@ -558,7 +561,7 @@ age4 <- cut(age, breaks = seq(20,80,length = 4), labels = c('young','middle','ol
 ifelse(age>50,'old','young')
 ifelse(age>60,'old',ifelse(age<30,'young','middle'))
 #car包，recode函数,重点
-library(car)
+library(car) # Companion to Applied Regression
 recode(var=age,recodes='lo:29=1;30:39=2;40:49=3;50:hi=4')
 #两个细节，注意到lo和hi分别表示极小值和极大值，不可使用low和high
 #另外，lo和29之间是：,而区间之间是;
@@ -601,8 +604,8 @@ tapply(iris[,1:4], iris$Species, mean)# 报错，tapply的缺陷用dcast可以�
 #mapply函数
 #首先看一个例子，if函数不能进行向量化操作！
 myfun <- function(x,y){
-  if(x>4)return(y)
-  else return(x+y)
+        if(x>4)return(y)
+        else return(x+y)
 }
 myfun(2,3)
 #但是，如果：
@@ -621,7 +624,7 @@ survival
 #ave也是根据分类变量计算均值，注意到ave里面输出的只有三个绝对值，用table统计
 #其实这个函数有缺点，因为根本看不到是针对谁在统计均值
 table(ave(survival$sur_days,survival$cancer))
-#by函数的
+#by函数
 #INDICES不仅可以传入单个因子还可以传入一个list
 by(data=survival$sur_days,INDICES=list(survival$cancer,survival$treatment),FUN=sd)
 #观察上述函数，注意到INDICES没有返回重复值，而是自动做了归纳！
@@ -648,18 +651,18 @@ my_array3 <- array(1:24,dim=c(3,4,2));my_array3
 class(my_array3)#可见my_array3是一个列表
 sweep(my_array3,MARGIN=1,5)
 #如果在sweep内加上一个FUN='+',则运算由默认的-变成了+
-sweep(my_array3,MARGIN=1,STATS=2,FUN = '+')
+sweep(my_array3,MARGIN=2,STATS=2,FUN = '+')
 
 #plyr,dplyr,data.table，三足鼎立，绝对重点
 ##plyr
-library(plyr)
+library(plyr) # Tools for Splitting, Applying and Combining Data
 
 #aaply
 my_matrix7 <- matrix(1:24,nrow=3,ncol=8)
 my_matrix7
 aaply1 <- aaply(my_matrix7,.margins=2,.fun=mean)
 class(aaply1)
-#上面的函数有三个特殊点，第一，margin和fun前面有.，第二，是aaply不是apply，第三，.margins是选择列或者行，2就是列
+#上面的函数有三个特殊点，第一，margins和fun前面有.，第二，是aaply不是apply，第三，.margins是选择列或者行，2就是列
 #当然，.margin和.fun都可以不写
 #aaply和apply基本一样，但是输出格式不一样
 #adply
@@ -682,9 +685,9 @@ ddply(.data = my_df,.variables=.(gender),summarize,mean_h=mean(height),sd_h=sd(h
 #注意，可以同时对均值和mean都进行了汇总分析！！这是tapply做不到的,ddply可以不停地往后面加各种函数进行不同运算
 # ddply还可以 对多个分类变量同时进行操作!!!
 my_df4 <- data.frame(name = c('Tony', 'Andy', 'Bob','Mary','Leo'),
-                     height = c(178,176,175,167,190),
-                     gender = c('M','F','F','M','M'),
-                     age = c('old','young','young','old','young'))
+                    height = c(178,176,175,167,190),
+                    gender = c('M','F','F','M','M'),
+                    age = c('old','young','young','old','young'))
 
 ddply(.data = my_df4, .variables = .(gender, age), .fun = summarize, mean_h = mean(height),sd_h=sd(height))
 #ddply的另外一种语法结构
@@ -709,9 +712,9 @@ ddply(iris,~Species,colwise(mean,.(Sepal.Length,Sepal.Width)))
 #点评，上面提到的很多函数都能起到这个作用，因此ddply和colwise的连联用并非重点
 
 # dplyr函数
-library(dplyr)
-library(reshape2)
-head(tips)
+library(dplyr) # A Grammar of Data Manipulation
+library(reshape2) # Flexibly Reshape Data: A Reboot of the Reshape Package # Flexibly Reshape Data: A Reboot of the Reshape Package
+head(tips)  
 # filter根据列变量，提取行
 sub1 <- filter(tips, tips$smoker=='No',tips$day=='Sun');sub1
 #slice函数,操作行，把我想要的行切出来！
@@ -736,6 +739,7 @@ head(tips7)
 #distinct函数
 levels(tips$sex)
 distinct(tips,sex)#但是实际上在某一列重复元素很多的时候，根据distinct也可以在[]内进行变量提取
+#试试看查看distinct得到的数据的类型及行名
 distinct(tips,day)
 
 #mutate函数，新建
@@ -748,19 +752,19 @@ sample_frac(iris,0.05)#从iris内部随机抽取1/20的行/观察值
 
 #group_by和summarize函数
 #group_by函数,单独使用并没有意义，但是和summarize函数一起使用将会发生巨大作用
-group <- group_by(tips,smoker)
-summarise(group,count=n(),mean_tips=mean(tip),sd_bill=sd(total_bill))
+group <- dplyr::group_by(tips,smoker)
+dplyr::summarise(group,count=n(),mean_tips=mean(tip),sd_bill=sd(total_bill))
 #管道符，%>%,快捷键为ctrl+shift+m
 # %>% 可以理解为一种将已知变量不断导入未知变量的一种嵌套函数操作！！
 result <- tips %>% group_by(smoker,sex) %>% 
-  summarise(count=n(),mean_tips=mean(tip),sd_bill=sd(total_bill))
+        summarise(count=n(),mean_tips=mean(tip),sd_bill=sd(total_bill))
 result
 # transform函数，比较弱，了解,注意new_rate这里报错了，因此不如summarize
 transform(tips, rate = tip/total_bill, new_rate = rate * 100)
 transform(tips, rate = tip/total_bill)
 
 #data.table
-library(data.table)
+library(data.table) # Extension of `data.frame`
 # data.table函数是建立在特殊数据结构data.table基础上的
 #rnorm生成正态分布数据,rnorm(n, mean = 0, sd = 1)
 # If mean or sd are not specified they assume the default values of 0 and 1, respectively
@@ -847,14 +851,16 @@ x[!is.na(x)]
 iris_na <- iris
 View(iris_na)
 for (i in 1:4){
-  iris_na[sample(1:nrow(iris_na),5),i]=NA
+        iris_na[sample(1:nrow(iris_na),5),i]=NA
 }
 # which函数，查找函数，返回下标
 sapply(iris_na[,1:4],function(x)which(is.na(x)))
 sapply(iris_na[,1:4],function(x)sum(is.na(x)))
 
 #install.packages("psych")
-library(psych)
+library(psych) # Procedures for Psychological, Psychometric, and Personality
+Research # Procedures for Psychological, Psychometric, and Personality
+Research
 describe(iris_na)# 根据n这一列发现NA占据5个位子
 #计算缺失值比例
 sapply(iris_na[,1:4],function(x)sum(is.na(x))/nrow(iris_na))
@@ -864,7 +870,7 @@ lm(Sepal.Length~Sepa1.Width,data=iris_na)# 报错
 #对iris进行变量重命名，也就是names函数
 names(iris_na) <- c('Sepa1.Length','Sepa1.Width','Lema1.Length','Lema1.Width','Type')
 head(iris_na)
-#在回归函数lm中，参数na;action默认就是na.omit,也就是忽略
+#在回归函数lm中，参数na.action默认就是na.omit,也就是忽略
 lm(Sepa1.Length~Sepa1.Width,data=iris_na)
 lm(Sepa1.Length~Sepa1.Width,data=iris_na,na.action=na.omit)
 
@@ -872,14 +878,13 @@ lm(Sepa1.Length~Sepa1.Width,data=iris_na,na.action=na.omit)
 mean_value <- sapply(iris_na[,1:4],mean,na.rm=TRUE)
 mean_value
 for (i in 1:4){
-  iris_na[is.na(iris_na[,i]),i]=mean_value[i]
+        iris_na[is.na(iris_na[,i]),i]=mean_value[i]
 }
 describe(iris_na)
 #注意到这个时候n已经变成了150！！！
-
 cancer <- data.frame(id=1:1000,sur_days=sample(100:1000,1000,replace=TRUE),type=sample(c('lung',
-                                                                                         'liver','kidney'),1000,replace=TRUE),treatment=sample(c('chemo','surgr'),1000,replace
-                                                                                                                                               =TRUE))
+           'liver','kidney'),1000,replace=TRUE),treatment=sample(c('chemo','surgr'),1000,replace
+                                                              =TRUE))
 
 cancer[sample(1:1000,90),2] <- NA
 mean_value <- tapply(cancer$sur_days,list(cancer$type,cancer$treatment),mean,na.rm=TRUE)
@@ -892,11 +897,11 @@ describe(cancer)
 #这样一来就实现了针对type和treatment进行精准填补NA
 str(cancer)
 for(i in 1:4){
-  for(j in 1:2){
-    cancer$sur_days[is.na(cancer$sur_days) & 
-                      cancer$type == rownames(mean_value)[i] &
-                      cancer$treatment == colnames(mean_value)[j]] = mean_value[i,j]
-  }
+        for(j in 1:2){
+                cancer$sur_days[is.na(cancer$sur_days) & 
+                cancer$type == rownames(mean_value)[i] &
+                cancer$treatment == colnames(mean_value)[j]] = mean_value[i,j]
+        }
 }
 
 describe(cancer)
@@ -904,7 +909,7 @@ describe(cancer)
 #缺失填补的高级函数
 #mlbench函数
 install.packages('mlbench')
-library(mlbench)
+library(mlbench) # Machine Learning Benchmark Problems
 data('BostonHousing')
 View(BostonHousing)
 original_data <- BostonHousing
@@ -914,12 +919,12 @@ BostonHousing[sample(1:nrow(BostonHousing), 80), "ptratio"] <- NA
 
 #mice函数
 install.packages('mice')
-library(mice)
+library(mice) # Multivariate Imputation by Chained Equations
 #md.pattern函数,对NA的分布情况进行描述
 md.pattern(BostonHousing)
-#注意到有2个变量两者都缺失，分别有71个两者各缺失一个
+#注意到有9个变量两者都缺失，分别有71个两者各缺失一个
 #Hmisc函数,其中的imppute函数，可以代替for循环
-library(Hmisc)
+library(Hmisc) # Harrell Miscellaneous
 lm_mean <- impute(BostonHousing$ptratio,mean)
 head(lm_mean)
 anyNA(BostonHousing)#这个时候rad变量还是有缺失值的
@@ -938,7 +943,7 @@ mean(actuals!=predicts1)#正确率高达75%
 
 #VIM函数,缺失值可视化
 install.packages("VIM")
-library(VIM)
+library(VIM) # Visualization and Imputation of Missing Values
 data('airquality')
 head(airquality)
 md.pattern(airquality)
@@ -985,42 +990,43 @@ mEx <- expression(2^2^3); mEx; 1 + eval(mEx)
 eval({ xx <- pi; xx^2}) 
 
 df <- data.frame(bp = c(sample(80:250, 20, replace = TRUE), NA, 390, 100))
-eval(substitute(bp),eval(dt))
-var_name <- eval(substitute(bp),dt)
-
+with(df,eval(substitute(bp),eval(df)))
+var_name <- eval(substitute(bp),df)
+class(df$bp)
+class(var_name)
 #一个非常好用的离群值识别的自定义函数
 outlierKD <- function(dt, var) {
-  var_name <- eval(substitute(var),eval(dt))# eval和substitute函数调查过后还是不太懂，后面再学习
-  tot <- sum(!is.na(var_name)) 
-  na1 <- sum(is.na(var_name))
-  m1 <- mean(var_name, na.rm = T)
-  par(mfrow=c(2, 2), oma=c(0,0,3,0))# help 一下par函数就会发现oma是用来设定边界的，学习医学方R高级绘图
-  boxplot(var_name, main="With outliers")
-  hist(var_name, main="With outliers", xlab=NA, ylab=NA)
-  outlier <- var_name[var_name > 230]#对离群值的定义，自己做的时候更改这里就行
-  mo <- mean(outlier)
-  var_name <- ifelse(var_name %in% outlier, NA, var_name)
-  boxplot(var_name, main="Without outliers")
-  hist(var_name, main="Without outliers", xlab=NA, ylab=NA)
-  title("Outlier Check", outer=TRUE)
-  na2 <- sum(is.na(var_name))
-  cat("Outliers identified:", na2 - na1, "\n")
-  cat("Propotion (%) of outliers:", round((na2 - na1) / tot*100, 1), "\n")
-  cat("Mean of the outliers:", round(mo, 2), "\n")
-  m2 <- mean(var_name, na.rm = T)
-  cat("Mean without removing outliers:", round(m1, 2), "\n")
-  cat("Mean if we remove outliers:", round(m2, 2), "\n")
-  response <- readline(prompt="Do you want to remove outliers 
+        var_name <- eval(substitute(var),eval(dt))# eval和substitute函数调查过后还是不太懂，后面再学习
+        tot <- sum(!is.na(var_name)) 
+        na1 <- sum(is.na(var_name))
+        m1 <- mean(var_name, na.rm = T)
+        par(mfrow=c(2, 2), oma=c(0,0,3,0))# help 一下par函数就会发现oma是用来设定边界的，学习医学方R高级绘图
+        boxplot(var_name, main="With outliers")
+        hist(var_name, main="With outliers", xlab=NA, ylab=NA)
+        outlier <- var_name[var_name > 230]#对离群值的定义，自己做的时候更改这里就行
+        mo <- mean(outlier)
+        var_name <- ifelse(var_name %in% outlier, NA, var_name)
+        boxplot(var_name, main="Without outliers")
+        hist(var_name, main="Without outliers", xlab=NA, ylab=NA)
+        title("Outlier Check", outer=TRUE)
+        na2 <- sum(is.na(var_name))
+        cat("Outliers identified:", na2 - na1, "\n")
+        cat("Propotion (%) of outliers:", round((na2 - na1) / tot*100, 1), "\n")
+        cat("Mean of the outliers:", round(mo, 2), "\n")
+        m2 <- mean(var_name, na.rm = T)
+        cat("Mean without removing outliers:", round(m1, 2), "\n")
+        cat("Mean if we remove outliers:", round(m2, 2), "\n")
+        response <- readline(prompt="Do you want to remove outliers 
                        and to replace with NA? [yes/no]: ")
-  if(response == "y" | response == "yes"){
-    dt[as.character(substitute(var))] <- invisible(var_name)
-    assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv)
-    cat("Outliers successfully removed", "\n")
-    return(invisible(dt))
-  } else{
-    cat("Nothing changed", "\n")
-    return(invisible(var_name))
-  }
+        if(response == "y" | response == "yes"){
+                dt[as.character(substitute(var))] <- invisible(var_name)
+                assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv)
+                cat("Outliers successfully removed", "\n")
+                return(invisible(dt))
+        } else{
+                cat("Nothing changed", "\n")
+                return(invisible(var_name))
+        }
 }
 
 
@@ -1039,7 +1045,7 @@ x[!duplicated(x)]
 anyDuplicated(x)#看看第一个重复值出现在哪里
 
 #根据多个变量去除重复值，第一个读取excel表格，第二个是利用！和dupicated从name和birthday两个变量角度排除重复值
-library(readxl)
+library(readxl) # Read Excel Files # Read Excel Files
 mydata <- read_excel('example.xlsx')
 #colnames(mydata)
 mydata[!(duplicated(mydata$`gene id`) & duplicated(mydata$gene_type)),]
@@ -1130,6 +1136,7 @@ gsub('\\$',replacement='',money)#R里面的转义字符和其他语言不一样�
 #regexpr函数
 test_string <- c('haaaaaappy','aqpppple','aplication','xpolitippc')
 test_string1 <- regexpr('pp',test_string)
+
 # 可以提取找到的pp分别在第i个字符串内出现的位置的下标
 # [1]  8  3 -1  8 # 找到的Pp出现的位置，-1是不存在
 # attr(,"match.length") 
@@ -1138,6 +1145,10 @@ test_string1 <- regexpr('pp',test_string)
 # [1] "chars" # 变量类型
 # attr(,"useBytes")
 # [1] TRUE #是否找到了至少一个
+# 问题来了，如何分别提取结果中的起始位置和字符串长度？
+test_string1[2]# 提取起始位置
+attr(test_string1,"match.length")[2]# 提取长度
+
 
 #agrep函数，类似于中文中的通假字，它不关心英美式写法
 string1 <- c('I need a favour', 'my favorite sport', 'you made an error')
@@ -1156,10 +1167,11 @@ grep('[7-9]',mystring3)
 #^符号，表示去找到以xxx开头的字符串
 mystring4 <- c('apple','application','abb')  
 grep('^ap', mystring4)
-mystring3 <- c('9anv','fss7','5000','ss7')
+mystring3 <- c('9anv','fss7','5000','ss7','sss')
 #^和[]的组合，表示非
 grep('[0-1]',mystring3)
 grep('[^0-9]',mystring3)# 意思是至少包含一个非数字字符！！！
+mystring3[-grep('[0-9]',mystring3)]# 这才是一个数字都不要
 #{}表示重复几次
 mystring6 <- c('1220','2289','2228','10002')
 grep('2{2,3}',mystring6)#2重复2-3次
@@ -1176,7 +1188,7 @@ grep('(foo){1,}',my_string7_1)
 #管道符，|,连接前后两个正则表达式
 mystring8 <- c('kobe','messi','neymar')  
 grep('^k|^m',mystring8)
-#￥,用来表示匹配字符串的结束位置，这个时候等价于\\b
+#$,用来表示匹配字符串的结束
 mystring9 <- c('active','positive','neagtive','ivention')  
 grep('ive$', mystring9)
 #\\保义字符，这个时候就告诉R，我们是在匹配^这个符号，而不是在找开头
@@ -1200,10 +1212,9 @@ mystrinf13 <- c('theory', 'the republic', '  they')
 #下面的形式表示只能返回the单独单词形式的字符串，其他都不返回
 grep('\\<the\\>',mystrinf13)
 
-
 #stringi和stringr扩展包
-library(stringi)
-library(stringr)
+library(stringi) # Character String Processing Facilities # Character String Processing Facilities # Character String Processing Facilities
+library(stringr) # Simple, Consistent Wrappers for Common String Operations
 #str_c函数
 str_c('a','b')
 str_c('a','b',sep = '-')
@@ -1219,7 +1230,7 @@ yxf
 fruit <- c("apple", "pear", "banana")
 str_dup(fruit, 2)
 str_dup(fruit, 2:4)#对三个字符串进行向量化操作,重复次数不同！
-#str_trim去除两侧空格
+#str_trim去除两侧空格,不起眼但是很常用！
 string <- ' Eternal love for YanQ '
 str_trim(string, side = 'both')
 #str_extract函数，利用正则表达式
@@ -1244,7 +1255,7 @@ stri_cmp_neq('AB','aB')
 
 #lt表示小于，gt表示大于stri_cmp_lt() & stri_cmp_gt(),注意到针对字母就表示针对字母表排序
 #注意，函数默认首先根据a和b大小来了
-stri_cmp_gt('a221','b121')
+stri_cmp_gt('a1221','b121')
 
 #计数函数str_count
 language <- c('Python','R', 'PHP', 'Ruby', 'Java', 
@@ -1280,6 +1291,7 @@ stri_startswith_fixed(c("abaDc", "aabadc",'ababa'), "ba", from=2)#from参数表�
 stri_endswith_fixed(c("abaDc", "aabadc",'ababa'),'ba')#以什么结尾
 stri_endswith_fixed(c("abaDc", "aabadc",'ababa','qcytr','qcbgf'),'ba', to = 3)#to表示只匹配到第几位
 
+# stri_extract系列是最值得掌握的
 tEmp_text <- c('EU_FRA02_C1_S2008','AF_COM12_B0_2004','AF_COM17_F0_S2008',
                'AS_CHN11_C3_2004','EU-FRA-C3-S2007','NAUSA02E02005',
                'AS_CHN12_N0_05','NA_USA03_C2_S2007','NA USA04_A3 2004',
@@ -1300,5 +1312,212 @@ View(m1[[2]])
 m1[[1]][,2][2]
 #得到遇到的第二个to的结束位置！
 #思考如何得到第二个my的开始位置
+
+
+# 时间序列处理
+Sys.setlocale("LC_TIME", "English")
+#时间序列函数as.Date,format表示时间的输入格式       
+as.Date('2/16/2017',format = '%m/%d/%Y')
+# %m #b表示数字月份
+# %b表示jan的字母月份简写，%B 表示月份全称
+# %Y#表示年份全称，2017; %y 17
+
+#注意，左侧中间有分隔符的，后面也必须有分隔符!在搜集病人信息的时候要使用同一种类型函数
+as.Date('March 10, 1993', format = '%B %d, %Y')
+as.Date('10Mar93','%d%b%y')
+
+#得到指定日期后100天的日期
+as.Date(100, origin = '2017-02-16')
+#ISOdate，年，月，日，时，分，秒
+ISOdate(1993,3,10,16,14,20)
+
+#POSIX时间格式,函数as.POSIXlt函数，字符串转化为时间!!!
+
+dts <- c('2005-10-21 18:24:24', "2017-02-16 19:20:20")
+as.POSIXlt(dts)
+#%a表示 Mon %A表示Monday
+
+#前一个输出时间，后一个输入时间,可以把某个时间放入到字符串中间去！！
+strptime()
+strftime()
+time <- strptime('04/3/2016:16:18:34', format = '%d/%m/%Y:%H:%M:%S')
+time
+strftime(time, 'Now is %H:%M on %Y %m %d')
+
+#julian函数，计算两个日期之间的差,重点，计算队列数据survival time
+julian(as.Date('2017-02-16'), origin = as.Date('2016-02-19'))
+
+#difftime返回units的指标，是weeks就返回周
+#units = c("auto", "secs", "mins", "hours","days", "weeks")
+difftime(as.Date('2017-02-16'),as.Date('2016-02-19'),units = 'weeks')
+#mean函数找到两日期中间的中点，注意必须用c把两个日期组合在一起
+mean(c(as.Date('2017-02-16'),as.Date('2016-02-19')))
+
+#seq函数,by里面不仅可以是days，还可以是2 days等
+dateline <- seq(as.Date('2016-02-10'), by = '2 weeks', length.out = 10)
+dateline
+
+library(stringi) # Character String Processing Facilities # Character String Processing Facilities # Character String Processing Facilities
+#函数stri_datetime_add,在某时间点基础上往前递进数个单位时间，单位通过units确定
+my_newtime <- stri_datetime_add(as.Date('2017-02-16'), value = 10, units = 'days')
+my_newtime
+#时间函数的转换函数，解析函数，format写法才是重点！
+stri_datetime_parse(c('2015-02-27','2015-02-28'), 'yyyy-MM-dd')
+#函数stri_datetime_parse，自动校正参数lenient将2015-02-29这个不存在日期转化为2015-03-01
+stri_datetime_parse(c('2015-02-27','2015-02-29'), 'yyyy-MM-dd',lenient=TRUE)
+
+#注意到函数自动加上现在的年份
+stri_datetime_parse('12.31 23:59:59 GMT+1','MM.dd HH:mm:ss zzz')
+
+# 重点函数,lubricate，时间处理最强函数
+library(lubridate) # Make Dealing with Dates a Little Easier
+
+ymd('020217')#默认是年月日
+mdy('06182016')#注意改为了mdy
+#注意，虽然格式很混乱，但是基本上都还是具有分隔符的！
+x <- c('2009s01s01','2009-01-02','2009 01 03','2009,1,4','09.1.1',
+       'leopard 09 12 09', '!!09 ## 12 $$ 12')
+x
+x_time <- ymd(x)
+x_time
+
+#ymd_hms函数
+ymd_hms('2017:02:19:14:23:23')
+ymd_hms('2017 02 19 14 23 23')
+ymd_hms('20170219142323')
+
+#提取时间中的子集！
+month(x_time, label = F)
+month(x_time, label = T, abbr = F)
+
+day(x_time)
+wday(x_time)#返回的是某年某月某日是一个星期中的第几天
+#还有yday函数
+#修改日期,将月份更改，类似的day和year也可以
+new_date <- now()
+new_date
+month(new_date) <- 12
+year(new_date) <- 2023
+new_date
+
+#生成一个日期序列，make_date函数，注意按照向量位置一一对应
+dates <- make_date(year = 2010:2016,month = 1:3,day = 1:5)
+dates
+
+make_datetime()#比make_date多了时间的制作
+#得到时间近似值
+x_time <- as.POSIXlt('2009-08-03 12:01:59')
+x_time
+round_date(x_time, unit = 'minute')
+round_date(x_time, unit = 'hour')
+round_date(x_time, unit = 'day')
+
+time_t <- c('2017-02','201609','2017/5')
+ymd(time_t)#无法识别，因为c中都只有两段数据
+ymd(time_t,truncated = 1)#设置截断！默认设置为每月第一天
+
+time_tt <- ymd('1900,01,01','1999,12,31')
+time_tt
+#如何计算两个日期之间的间隔时间？interval函数，然后使用time_length
+int <- interval(start = ymd('1900,01,01'),end = ymd('1999,12,31'))
+time_length(int,unit = 'day')
+
+#日期做加法,lubricate更加灵活了
+x <- as.POSIXlt('2017-02-03')
+x + days(10) + hours(12) + minutes(30)
+
+#时间序列命题
+#ts函数，timeseries,frequency可以看做是循环周期内的个数，4就是季度，10表示总次数
+ts(1:10, frequency = 4, start = c(1998, 1))
+#对应的如果frequency=12，那么就按照月份,注意到显然的，start和end函数框定的范围的优先级在1:12之上
+ts(1:12,frequency = 12, start = c(1999, 13),end = c(2001,3))
+
+
+value <- ts(data = sample(0:300,366,replace = TRUE),start = as.Date('2016-01-01'), frequency = 1,end = as.Date('2016-12-31'))
+date <- seq(from = as.Date('2016-01-01'),by = 1, length.out = 366)
+df <- data.frame(value = value, time = date)
+plot(value)
+View(df)
+
+plot(ts(cumsum(1+round(rnorm(100),2)), start = c(1954,7), frequency = 12))
+#cumsum表示求累和，比如斐波那契数列
+
+#xts函数
+library(xts) # eXtensible Time Series
+
+value <- sample(0:100, 365, replace = T)
+times <- seq(from = as.Date('2017-01-01'), by = 1, length = 365)
+
+myts <- xts(value, times)
+myts
+#注意到，xts本身就是函数，同时，生成的列表只有一列，时间只不过是标签
+#提取日期，window函数
+window(myts, start = as.Date('2017-01-10'), end = as.Date('2017-01-15'))
+#重新赋值，windows函数
+window(myts, start = as.Date('2017-01-10'), end = as.Date('2017-01-15')) <- 1:6
+
+#lag函数,把前一项赋值给后一项
+head(lag(myts))
+#diff函数计算离差，就是后一项减去前面一项！！！
+head(diff(myts))
+
+#时间序列分析概论
+data("co2")
+class(co2)
+head(co2)
+#一般训练集在50%以上(不对，现在流行训练集小于30%)
+training <- co2[1:400]
+class(training)
+#ts函数,把training转化为时间序列函数
+ts_training <- ts(training, start = start(co2), frequency = frequency(co2))
+plot(ts_training)
+#decompose函数，趋势相，季节相，随机相,判断变化来自哪个相
+## 这个函数的目的在于分解变化趋势的来源
+de_co2 <- decompose(ts_training)
+plot(de_co2)
+
+#SARIMA季节性差分自动回归模型,tseries函数
+install.packages('tseries')
+library(tseries) 
+
+# ARIMA(P,D,Q) #P是自相关阶数，D代表差分阶数（1阶就是后面减去前面减一次），Q代表滑动平均
+#平稳概念，均值没有明显增长或者降低的趋势，方差没有的话叫做方差平稳
+
+training <- co2[1:400]
+ts_training <- ts(training, start = start(co2), frequency = frequency(co2))
+kpss.test(ts_training)#kpss.test函数判断是否平衡，可以看到ts_training并不平稳
+plot(ts_training)
+
+#diff函数进行一阶差分,如果kpss.test得到的p大于0.01，就平稳
+ts_training_diff <- diff(ts_training)
+kpss.test(ts_training_diff)
+plot(ts_training_diff)
+
+#关于Q值
+#acf自相关系数，pacf是偏次相关系数
+acf(ts_training)
+#注意到在上面的函数中，拖尾情况非常不明显，因为显然看不出来从什么时候开始下降的
+#这个时候Q无法确定
+pacf(ts_training)#1之后明显下降，所以让Q为1
+
+
+#forcast函数包实现SARIMA,重要函数Arima
+install.packages('forecast')
+library(forecast)
+
+#第一个order是整个函数的P D Q，第二个order是季节的P D Q，period是季节数
+co2_fit <- Arima(ts_training, order = c(1,1,1), 
+                 seasonal = list(order = c(1,1,1), period = 12))
+
+
+co2_fore <- forecast(co2_fit, 68)
+
+plot(co2, col = 'red')
+par(new = TRUE)#new。逻辑值，默认值为FALSE。如果设定为TRUE，那么下一个绘图命令在旧的绘图上进行。
+plot(co2_fore)
+
+
+
+
 
 
